@@ -1,3 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  @apply antialiased text-gray-800;
+}
+
+/* Chat widget styles */
+.chat-widget .chat-container {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 350px;
+  height: 500px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  z-index: 50;
+}
+
+@media (max-width: 640px) {
+  .chat-widget .chat-container {
+    width: calc(100% - 40px);
+    height: 400px;
+  }
+}
