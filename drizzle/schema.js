@@ -1,54 +1,57 @@
-import { pgTable, serial, text, timestamp, uuid, boolean, integer } from 'drizzle-orm/pg-core';
+import { pgTable, serial, text, timestamp, uuid, boolean, date, integer } from 'drizzle-orm/pg-core';
 
 export const contactMessages = pgTable('contact_messages', {
   id: serial('id').primaryKey(),
-  userId: uuid('user_id').notNull(),
-  userEmail: text('user_email').notNull(),
+  staffId: uuid('staff_id').notNull(),
   subject: text('subject').notNull(),
   message: text('message').notNull(),
-  createdAt: timestamp('created_at').defaultNow(),
-  status: text('status').default('pending')
+  department: text('department').notNull(),
+  priority: text('priority').notNull(),
+  createdAt: timestamp('created_at').defaultNow()
 });
 
 export const accidentReports = pgTable('accident_reports', {
   id: serial('id').primaryKey(),
-  userId: uuid('user_id').notNull(),
-  userEmail: text('user_email').notNull(),
-  incidentDate: timestamp('incident_date').notNull(),
+  staffId: uuid('staff_id').notNull(),
+  date: date('date').notNull(),
+  time: text('time').notNull(),
   location: text('location').notNull(),
   description: text('description').notNull(),
-  involvedParties: text('involved_parties').notNull(),
+  vehiclesInvolved: text('vehicles_involved').notNull(),
   injuries: boolean('injuries').notNull(),
-  propertyDamage: boolean('property_damage').notNull(),
-  witnessInfo: text('witness_info'),
-  createdAt: timestamp('created_at').defaultNow(),
-  images: text('images'),
-  status: text('status').default('submitted')
+  injuryDetails: text('injury_details'),
+  witnesses: text('witnesses'),
+  driverName: text('driver_name').notNull(),
+  busNumber: text('bus_number').notNull(),
+  createdAt: timestamp('created_at').defaultNow()
 });
 
 export const busMovements = pgTable('bus_movements', {
   id: serial('id').primaryKey(),
-  userId: uuid('user_id').notNull(),
-  userEmail: text('user_email').notNull(),
-  busId: text('bus_id').notNull(),
+  staffId: uuid('staff_id').notNull(),
+  busNumber: text('bus_number').notNull(),
+  driverName: text('driver_name').notNull(),
   departureLocation: text('departure_location').notNull(),
-  departureTime: timestamp('departure_time').notNull(),
   arrivalLocation: text('arrival_location').notNull(),
+  departureTime: timestamp('departure_time').notNull(),
   arrivalTime: timestamp('arrival_time'),
-  passengers: integer('passengers'),
+  status: text('status').notNull(),
+  passengerCount: integer('passenger_count'),
   notes: text('notes'),
-  createdAt: timestamp('created_at').defaultNow(),
-  status: text('status').default('active')
+  createdAt: timestamp('created_at').defaultNow()
 });
 
-export const midsReports = pgTable('mids_reports', {
+export const mids = pgTable('mids', {
   id: serial('id').primaryKey(),
-  userId: uuid('user_id').notNull(),
-  userEmail: text('user_email').notNull(),
-  reportType: text('report_type').notNull(),
-  title: text('title').notNull(),
+  staffId: uuid('staff_id').notNull(),
+  midNumber: text('mid_number').notNull(),
+  date: date('date').notNull(),
+  incidentType: text('incident_type').notNull(),
   description: text('description').notNull(),
-  attachments: text('attachments'),
-  createdAt: timestamp('created_at').defaultNow(),
-  status: text('status').default('submitted')
+  location: text('location').notNull(),
+  peopleInvolved: text('people_involved'),
+  actionsTaken: text('actions_taken').notNull(),
+  followUpRequired: boolean('follow_up_required').notNull(),
+  followUpDetails: text('follow_up_details'),
+  createdAt: timestamp('created_at').defaultNow()
 });

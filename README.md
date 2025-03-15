@@ -1,39 +1,39 @@
-# Staff Portal Application
+# Staff Portal
 
-A business staff portal application for communication, accident reporting, bus movement tracking, and MIDS reports.
+A comprehensive staff portal for business operations, including:
+
+- Staff communication
+- Accident reporting
+- Bus movement tracking
+- Minor Incident Detail (MID) reporting
 
 ## Features
 
-- User authentication
-- Contact management system for staff to reach management
-- Accident report submission system
-- Bus movement tracking and information system
-- MIDS (Management Information and Decision Support) reporting system
-- User profile management
-- Responsive design for all devices
+- Authentication with Supabase
+- Contact form for staff-to-management communication
+- Detailed accident report forms
+- Bus movement logging and tracking
+- MID reporting system
+- Report history viewing
 
-## Tech Stack
+## Technology Stack
 
-- React with Vite
-- Tailwind CSS for styling
-- React Router for navigation
-- React Hook Form for form handling
-- Supabase for authentication
-- CockroachDB for database storage
-- Drizzle ORM for database operations
-- Vercel for deployment
+- React
+- Tailwind CSS
+- Supabase (Authentication)
+- CockroachDB (Database)
+- Drizzle ORM
+- Vercel (Deployment)
 
-## Getting Started
+## Development
 
-1. Clone the repository
-2. Install dependencies with `npm install`
-3. Set up environment variables
-4. Run the development server with `npm run dev`
+```bash
+# Install dependencies
+npm install
 
-## Deployment
+# Run development server
+npm run dev
 
-The application is deployed on Vercel. Push to the main branch to trigger a deployment.
-
-## License
-
-Copyright © 2023
+# Build for production
+npm run build
+```

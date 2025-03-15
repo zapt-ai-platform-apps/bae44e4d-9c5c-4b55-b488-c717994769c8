@@ -1,13 +1,14 @@
 {
     "name": "staff-portal",
     "version": "1.0.0",
-    "description": "Business staff portal for communication, accident reporting, and bus movement tracking",
+    "description": "Staff portal for reporting accidents, bus movements, and sending messages",
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "build": "vite build",
+        "build": "vitest run && vite build",
         "serve": "vite preview",
-        "start": "vite --host"
+        "start": "vite --host",
+        "test": "vitest"
     },
     "dependencies": {
         "@sentry/browser": "^8.41.0",
@@ -15,21 +16,24 @@
         "@supabase/auth-ui-react": "^0.4.7",
         "@supabase/auth-ui-shared": "^0.1.8",
         "@zapt/zapt-js": "^1.0.21",
-        "date-fns": "^3.5.0",
+        "date-fns": "^3.4.0",
         "drizzle-orm": "^0.33.0",
         "postgres": "^3.4.5",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
-        "react-hook-form": "^7.51.0",
+        "react-hook-form": "^7.51.1",
         "react-icons": "^5.2.1",
         "react-router-dom": "^6.22.3"
     },
     "devDependencies": {
         "@vitejs/plugin-react": "^4.3.4",
+        "@vitest/ui": "^1.3.1",
         "autoprefixer": "^10.4.20",
+        "jsdom": "^24.0.0",
         "postcss": "^8.4.47",
         "tailwindcss": "^3.4.13",
         "vite": "^5.4.7",
-        "@sentry/vite-plugin": "^2.23.0"
+        "@sentry/vite-plugin": "^2.23.0",
+        "vitest": "^1.3.1"
     }
 }

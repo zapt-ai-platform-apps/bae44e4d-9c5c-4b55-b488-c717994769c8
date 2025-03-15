@@ -15,20 +15,24 @@ Sentry.init({
 const { supabase } = initializeZapt(process.env.VITE_PUBLIC_APP_ID);
 
 export async function authenticateUser(req) {
-  const authHeader = req.headers.authorization;
-  if (!authHeader) {
-    throw new Error('Missing Authorization header');
-  }
+  try {
+    const authHeader = req.headers.authorization;
+    if (!authHeader) {
+      throw new Error('Missing Authorization header');
+    }
 
-  const token = authHeader.split(' ')[1];
-  const { data: { user }, error } = await supabase.auth.getUser(token);
+    const token = authHeader.split(' ')[1];
+    const { data: { user }, error } = await supabase.auth.getUser(token);
 
-  if (error) {
+    if (error) {
+      console.error('Authentication error:', error);
+      throw new Error('Invalid token');
+    }
+
+    return user;
+  } catch (error) {
+    console.error('Error in authenticateUser:', error);
     Sentry.captureException(error);
-    throw new Error('Invalid token');
+    throw error;
   }
-
-  return user;
 }
-
-export { Sentry };
